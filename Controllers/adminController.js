@@ -1,5 +1,5 @@
 const {get} = require("mongoose");
-const adminModel = require("../model/adminModel");
+const adminModel = require("../Model/userModel");
 const bcrypt = require("bcryptjs");
 
 // const Adminsign = async (req, res) => {

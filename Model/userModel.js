@@ -28,4 +28,4 @@ const userSchema = mongoose.Schema({
     }
 });
 const usermodel = mongoose.models.user_collections || mongoose.model('user_collections', userSchema);
-module.exports = usermodel;
+module.exports = usermodel
