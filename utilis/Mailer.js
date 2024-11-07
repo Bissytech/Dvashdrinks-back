@@ -8,7 +8,7 @@ const welcomemail = async (email, firstname) => {
     <head>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Welcome to Our Service!</title>
+        <title> Welcome to Dvash- We are thrilled to have you!!!</title>
         <style>
             {
             body {
@@ -62,19 +62,27 @@ const welcomemail = async (email, firstname) => {
 
     <div class="container">
 <div class="header">
-    <h1>Welcome to FootFaves!</h1>
+    <h1>We're happy to have you.</h1>
 </div>
 <div class="content">
-    <p>Dear ${firstname},</p>
-    <p>Thank you for joining FootFaves community where You find the perfect shoes for Your foot! We’re thrilled to have you on board.</p>
-    <p>To get started, please visit your dashboard by clicking the link below:</p>
-    <a href="[Dashboard URL]" class="button">Go to Dashboard</a>
-    <p>If you have any questions or need assistance, feel free to reply to this email ${process.env.MAIL} or visit our help center.</p>
-    <p>Best regards,<br>Footaves Team</p>
+    <p>Hi ${firstname},</p>
+    <p>We believe you're going to love everything we offer, from delicious and healthy natural fresh drinks, swift delivery and exclusive member benefits.</p>
+   <p> Here's how to get started:</p>
+<ol>
+<li>Explore Our Products: Check out our wide range of [e.g., fresh juices, healthy parfaits] and discover your favorites.<li/>
+<li>Enjoy Member Perks: As a valued member, you’re eligible for [e.g., exclusive discounts, personalized offers, etc.].<li/>
+<li>Stay Connected: Follow us on social media to get the latest updates and special offers.<li/>
+<ol/>
+   <p>We’re here to make your experience amazing. If you have any questions or need assistance, don’t hesitate to reach out.
+
+
+   <p>Thank you for joining us! We can’t wait for you to experience everything [Your Website Name] has to offer.<p/><p/>
 </div>
-<div class="footer">
-    <p>&copy; 2024 FootFaves. All rights reserved.</p>
-    <p>shop 18 ,heritage mall dugbe ibadan</p>
+<div>
+<p>Warmest Welcome,<p/>
+<p>TheDvash Team<p/>
+${process.env.mail}
+
 </div>
 </div>
     </body>
@@ -94,10 +102,10 @@ const welcomemail = async (email, firstname) => {
     )
 
     const Mailoptions = {
-        from: process.env.MAIL,
+        from: process.env.mail,
         to: email,
         subject: "Welcome",
-        text: "hello and Welcome to Footfaves!",
+        text: "Welcome to Dvash!",
         html: messageTemplate
     }
     try {

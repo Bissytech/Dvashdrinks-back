@@ -23,5 +23,24 @@ const productSchema = mongoose.Schema({
     enum : ['drinks' , 'parfaits']
   }
 });
+
+const paymentSchema = mongoose.Schema({
+  cardNum:{
+    type:String,
+    required: true,
+    minLength : [12, 'Card number cannot be more than 12 digits']
+  },
+  expiryDate:{
+    type: String,
+    required: true,
+    minLength : [4, 'Input the date with the format 0105']
+  },
+  cvv:{
+    type: String,
+    required: true,
+    minLength : [3, 'input the 3 digit number at the back of your card']
+  }
+})
+const paymentModel = mongoose.model('transactions_completed', paymentSchema)
 const productmodel = mongoose.model("product_collections", productSchema);
-module.exports = productmodel;
+module.exports = productmodel, paymentModel;

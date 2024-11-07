@@ -76,7 +76,25 @@ const handleAddToCart = async(req,res)=>{
  }
 }
 
-
+const finalPayment = async(req, res)=>{
+  const{cardNum, expiryDate, cvv} = req.body
+  console.log(req.body);
+  
+  if(!cardNum||!expiryDate||!cvv){
+    res.status(400).send({message:"Pls input all card"})
+  }
+ else{
+  const paymentSuccess = await paymentModel.create({
+    expiryDate,cvv,cardNum
+    })
+  
+    if (paymentSuccess){
+        res.status(200).send({message: "Payment made successfully", status:true})
+      
+    }
+ }
+  
+  };
 
 const Login = async(req,res)=>{
     const {email,password} = req.body
@@ -121,4 +139,4 @@ const Login = async(req,res)=>{
     }
   }
 }
-module.exports = {Signup, Login, Move, handleAddToCart}
+module.exports = {Signup, Login, Move, handleAddToCart, finalPayment}
