@@ -43,4 +43,4 @@ const paymentSchema = mongoose.Schema({
 })
 const paymentModel = mongoose.model('transactions_completed', paymentSchema)
 const productmodel = mongoose.model("product_collections", productSchema);
-module.exports = productmodel, paymentModel;
+module.exports = {productmodel, paymentModel};

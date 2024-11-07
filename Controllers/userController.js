@@ -1,9 +1,9 @@
 const {get} = require('mongoose');
 const usermodel = require('../Model/userModel')
-const paymentModel = require('../Model/productModel')
+const {productmodel, paymentModel} = require('../Model/productModel')
 const bcrypt = require('bcryptjs');
 const JWT = require('jsonwebtoken')
-const productmodel = require('../Model/productModel');
+// const productmodel = require('../Model/productModel');
 const { welcomemail } = require('../utilis/Mailer');
 
 const Signup = async(req,res)=>{
