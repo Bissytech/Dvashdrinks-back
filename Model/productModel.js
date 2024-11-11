@@ -29,21 +29,22 @@ const paymentSchema = mongoose.Schema({
     type:String,
     required: true,
     minLength : [12, 'Card number cannot be more than 12 digits'],
-    maxLength:12
+ 
   },
   expiryDate:{
     type: String,
     required: true,
     minLength : [4, 'Input the date with the format 0105'],
-    maxLength:4
+  
   },
   cvv:{
     type: String,
     required: true,
     minLength : [3, 'input the 3 digit number at the back of your card'],
-    maxLength: 3
+ 
   }
 })
-const paymentModel = mongoose.model('transactions_completed', paymentSchema)
+
 const productmodel = mongoose.model("product_collections", productSchema);
+const paymentModel = mongoose.model('transactions_completed', paymentSchema)
 module.exports = {productmodel, paymentModel};

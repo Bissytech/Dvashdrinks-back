@@ -35,7 +35,7 @@ const welcomemail = async (email, firstname) => {
             .content {
                 padding: 20px;
             }
-            .footer {
+            .thefooter {
                 background-color: #f1f1f1;
                 color: #777;
                 text-align: center;

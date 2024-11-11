@@ -6,7 +6,7 @@ const JWT = require('jsonwebtoken')
 // const productmodel = require('../Model/productModel');
 const { welcomemail } = require('../utilis/Mailer');
 
-const Signup = async(req,res)=>{
+const Signup = async(req,res)=> {
 console.log(req.body);
 try {
     const {firstName,lastName,email,password} = req.body;

@@ -2,7 +2,7 @@ const { get } = require("mongoose");
 const usermodel = require("../Model/userModel");
 const bcrypt = require("bcryptjs");
 const cloudinary = require("../utilis/cloudinary");
-const productmodel = require("../Model/productModel");
+const {productmodel} = require("../Model/productModel");
 
 const addproduct = async (req, res) => {
   const { productname, productdescription, productprice, coverimage , productCategory} =
