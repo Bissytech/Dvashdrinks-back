@@ -72,7 +72,7 @@ const handleAddToCart = async(req,res)=>{
     res.status(200).send({message: 'Product was found', status:true})
   } 
  } catch (error) {
-  
+  res.status(500).send({message:'internal server error', status: false})
  }
  }
 }
@@ -85,14 +85,20 @@ const finalPayment = async(req, res)=>{
     res.status(400).send({message:"Pls input all card"})
   }
  else{
-  const paymentSuccess = await paymentModel.create({
-    expiryDate,cvv,cardNum
-    })
-  
-    if (paymentSuccess){
-        res.status(200).send({message: "Payment made successfully", status:true})
-      
-    }
+  try {
+    const paymentSuccess = await paymentModel.create({
+      expiryDate,cvv,cardNum
+      })
+    
+      if (paymentSuccess){
+          res.status(200).send({message: "Payment made successfully", status:true})
+        
+      }else{
+        res.status(400).send({message: "couldnt make payments, try again later", status:false})
+      }
+  } catch (error) {
+    res.status(500).send({message:'internal server error', status: false})
+  }
  }
   
   };
