@@ -83,6 +83,8 @@ const finalPayment = async(req, res)=>{
   
   if(!cardNum||!expiryDate||!cvv){
     res.status(400).send({message:"Pls input all card"})
+  }else if(cardNum ==! 12 || expiryDate ==! 4 || cvv ==! 3){
+    res.status(400).send({message:"Pls correctly input all digit values"})
   }
  else{
   try {
@@ -94,7 +96,7 @@ const finalPayment = async(req, res)=>{
           res.status(200).send({message: "Payment made successfully", status:true})
         
       }else{
-        res.status(400).send({message: "couldnt make payments, try again later", status:false})
+        res.status(400).send({message: "couldnt make payments, try again later", status:})
       }
   } catch (error) {
     res.status(500).send({message:'internal server error', status: false})
