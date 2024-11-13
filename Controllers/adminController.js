@@ -62,7 +62,7 @@ username: admin.username,
 email: admin.email,
 adminId: admin._id
   }
-}, secretKey,{expiresIn: '1d'})
+}, adminSecretKey,{expiresIn: '1d'})
 
         if (!correctpassword) {
           res
