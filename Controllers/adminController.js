@@ -1,39 +1,7 @@
 const {get} = require("mongoose");
 const adminModel = require("../Model/adminModel");
 const bcrypt = require("bcryptjs");
-
-// const Adminsign = async (req, res) => {
-//   console.log(req.body);
-//   try {
-//     const { username, password, email } = req.body;
-//     if (!username || !password || !email) {
-//       res.status(400).send({ message: "Kindly fill all fields" });
-//     } else {
-//       const existadmin = await adminModel.findOne({ email: email });
-//       console.log(existadmin);
-//       if (existadmin) {
-//         res.status(402).send({ message: "Admin already exist", status: false });
-//       } else {
-//         const hashpassword = await bcrypt.hash(password, 10);
-//         console.log(hashpassword);
-//         const newadmin = await adminModel.create({
-//           username,
-//           email,
-//           password,
-//         });
-//         if (newadmin) {
-//           res
-//             .status(200)
-//             .send({ message: "Admin signup successful", status: true });
-//         }
-//       }
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).send({ message: error.message, status: false });
-//   }
-// };
-
+const jwt = require('jsonwebtoken')
 const Adminsign = async (req, res) => {
     console.log(req.body);
     try {
@@ -87,6 +55,15 @@ const Logadmin = async (req, res) => {
           });
       } else {
         const correctpassword = await bcrypt.compare(password, admin.password);
+        const adminSecretKey = process.env.jwt_secret
+const adminToken = jwt.sign({
+  admin: {
+username: admin.username,
+email: admin.email,
+adminId: admin._id
+  }
+}, secretKey,{expiresIn: '1d'})
+
         if (!correctpassword) {
           res
             .status(405)
