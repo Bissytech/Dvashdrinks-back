@@ -83,10 +83,10 @@ const finalPayment = async(req, res)=>{
   
   if(!cardNum||!expiryDate||!cvv){
     res.status(400).send({message:"Pls input all card"})
-  }else if(cardNum.length ==! 12 || expiryDate.length ==! 4 || cvv.length ==! 3){
-    res.status(400).send({message:"Pls correctly input all digit values"})
-  }
- else{
+  }else{
+   if (cardNum.length ==! 12 || expiryDate.length ==! 4 || cvv.length ==! 3){
+      res.status(400).send({message:"Pls correctly input all digit values"})
+    } else{
   try {
     const paymentSuccess = await paymentModel.create({
       expiryDate,cvv,cardNum
@@ -100,7 +100,7 @@ const finalPayment = async(req, res)=>{
       }
   } catch (error) {
     res.status(500).send({message:'internal server error', status: false})
-  }
+  } }
  }
   
   };
