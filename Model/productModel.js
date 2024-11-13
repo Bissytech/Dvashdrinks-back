@@ -28,19 +28,19 @@ const paymentSchema = mongoose.Schema({
   cardNum:{
     type:String,
     required: true,
-    length : 12
+    length : [12, 'Card number must be 12 digits']
  
   },
   expiryDate:{
     type: String,
     required: true,
-    length : 4
+    length : [4, 'The expiry date must be in 12 digits']
   
   },
   cvv:{
     type: String,
     required: true,
-    length : 3
+    length : [3, 'The CVV is the 3 digit number at the back of your card']
  
   }
 })
