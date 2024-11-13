@@ -84,7 +84,8 @@ const finalPayment = async(req, res)=>{
   if(!cardNum||!expiryDate||!cvv){
     res.status(400).send({message:"Pls input all card"})
   }else{
-   if (cardNum.length ==! 12 || expiryDate.length ==! 4 || cvv.length ==! 3){
+   if (cardNum.length !== 12 || expiryDate.length !== 4 || cvv.length !== 3){
+    console.log(cardNum.length, expiryDate.length, cvv.length)
       res.status(400).send({message:"Pls correctly input all digit values"})
     } else{
   try {
